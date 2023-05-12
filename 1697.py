@@ -18,20 +18,20 @@ def queue(point):
     global front
     global cnt
     cnt = cnt + 3
-    sec = int(math.floor(math.log(2*cnt+1, 3)))
-    level = sec
+    # sec = int(math.floor(math.log(2*cnt+1, 3)))
+    level = point[1] + 1
 
-    new1 = point - 1
+    new1 = point[0] - 1
     if new1 >=0 and pos[new1] == 0:
         pos[new1] = 1
         q.append([new1, level])
 
-    new2 = point + 1
+    new2 = point[0] + 1
     if new2 <= 100_000 and pos[new2] == 0:
         pos[new2] = 1
         q.append([new2, level])
 
-    new3 = 2*point
+    new3 = 2*point[0]
     if new3 <= 100_000 and pos[new3] == 0:
         pos[new3] = 1
         q.append([new3, level])
@@ -48,6 +48,6 @@ while True:
         print(nowlevel)
         break
     else:
+        queue(q[front])
         front = front + 1
-        queue(now)
 
