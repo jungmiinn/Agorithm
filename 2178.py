@@ -12,3 +12,8 @@ for i in range(n):
     for j in range(m):
         l.append(temp[j])
     ary.append(l)
+    l = list()
+print(ary)
+
+v = [0 for i in range(n*m)]
+def maze(ary):
