@@ -35,4 +35,3 @@ def judge(ary):
     return res
 
 n = judge(origin_ary)
-if n == 0 :
