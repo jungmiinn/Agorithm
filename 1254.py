@@ -36,6 +36,3 @@ def judge(ary):
 
 n = judge(origin_ary)
 if n == 0 :
-
-elif n == 1:
-elif n ==2:
