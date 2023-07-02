@@ -13,8 +13,9 @@ for i in range(n):
     inp.append(arr)
 print(inp)
 
-v = [n][m]
+v = [[0 for i in range(n)]for j in range(m)]
 next = []
+
 
 def findway(x, y):
     cnt = cnt + 1
@@ -29,5 +30,6 @@ def findway(x, y):
     a = next.pop(0)[0]
     b = next.pop(0)[1]
     findway(a, b)
-    
+
+
 print(findway(0, 0))
