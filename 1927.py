@@ -1,21 +1,17 @@
+import heapq
+import sys
+input = sys.stdin.readline
+print = sys.stdout.write
+
 n = int(input())
 ary = list()
 
-
-def printMin():
-    global ary
-    if len(ary) == 0:
-        print(0)
-    else:
-        mi = min(ary)
-        idx = ary.index(mi)
-        ary.remove(idx)
-        print(mi)
-
-
 for i in range(n):
-    x = int(input())
-    if x == 0:
-        printMin()
+    a = int(input())
+    if a == 0:
+        if len(ary) == 0:
+            print("%d\n" % 0)
+        else:
+            print("%d\n" % heapq.heappop(ary))
     else:
-        ary.append(x)
+        heapq.heappush(ary, a)
