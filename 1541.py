@@ -3,37 +3,43 @@ queue = list()
 val = 0
 integer = ""
 temp = 0
+status = False
 
 
 def makingint():
     global integer
     num = int(integer)
-    # queue.append(num)
     integer = ""
     return num
 
 
-for i in range(len(n)):
+i = 0
+while(status == False):
     if n[i] == '-':
-        queue.append(makingint())
-        while (True):
-            if n[i] == '-':
-                break
-            i = i+1
-            val = val + int(n[i])
-        if n[i] == '+':
-            queue.append(makingint())
-            continue
-        else:
-            integer = integer + n[i]
+        status = True
+        break
+    elif n[i]=='+':
+        temp = temp + makingint()
     else:
-        if n[i] == '+':
-            temp = makingint() + temp
-        else:
-            integer = integer+n[i]
+        integer = integer+n[i]
+    i = i + 1
+    if  i == len(n):
+        status = True
+        break
+temp = temp + makingint()
+queue.append(temp)
+while(i < len(n)):
+    i = i+1
+    if n[i]=='+':
+        temp = temp + makingint()
+    elif n[i] =='-':
+        temp = temp + makingint()
+        queue.append(-1*temp)
+    else:
+        integer = integer+n[i]
 
 
-makingint()
-for x in range(1, len(queue)):
-    fi = fi - int(queue[x])
+fi = 0
+for x in range(len(queue)):
+    fi = fi + queue[x]
 print(fi)
