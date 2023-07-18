@@ -1,5 +1,6 @@
 # 1446 세준이의 등교 지름길
 import heapq
+import builtins
 
 a = list(map(int, input().split(' ')))
 n = a[0]
@@ -14,19 +15,18 @@ for i in range(n):
 
 
 start = [0, 0, 0]
+
 for i in range(n):
     print(start)
     if start[1] == d:
         break
-    cmp = heapq.heappop(heap)[1]
-    if start[1] < cmp[0]:
-        accul  = accul + cmp[0]-start[1]
-    accul += cmp[2]
-    start = cmp
+    else:
+        temp = heapq.heappop(heap)[1]
 
+    if temp[1]-temp[0] < temp[3]:
+        accul = accul + temp[1]-temp[0]
+    else:
+        accul += temp[2]
+    start = temp
 
-
-
-
-
-        
+print(accul)
