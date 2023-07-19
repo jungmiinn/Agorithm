@@ -1,3 +1,5 @@
+# 수리공 항승
+
 a = list(map(int, input().split(' ')))
 b = list(map(int, input().split(' ')))
 

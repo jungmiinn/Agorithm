@@ -5,17 +5,16 @@ import sys
 a = list(map(int, input().split(' ')))
 n = a[0]
 d = a[1]
+path = [1 for i in range(d)]
+print(path)
+
 arr = list()
 left_d = d
 
 for i in range(n):
     temp = list(map(int, input().split(' ')))
     if temp[1] <= d and temp[2] < temp[1]-temp[0]:
-        # print(pri)
-        heapq.heappush(arr,(temp[0], tem
-                            p))
+        heapq.heappush(arr, (temp[0], temp))
 
-dis = list()
-for i in range(n):
-
-    
+def gototheSC(start):
+    if 
