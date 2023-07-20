@@ -9,12 +9,17 @@ path = [1 for i in range(d)]
 print(path)
 
 arr = list()
-left_d = d
+now_d = 0
 
 for i in range(n):
     temp = list(map(int, input().split(' ')))
     if temp[1] <= d and temp[2] < temp[1]-temp[0]:
         heapq.heappush(arr, (temp[0], temp))
 
+
 def gototheSC(start):
-    if 
+    if now_d == d:
+        return
+    sc = heapq.heappop(arr)
+    for i in range(d):
+        left_d -= path[i]
