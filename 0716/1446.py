@@ -24,6 +24,5 @@ for i in range(len(arr)):
         path[des] = cost + path[start]
         for j in range(des+1, d+1):
             path[j] = path[j-1] + 1
-            print(path[j])
 
 print(path[d])
