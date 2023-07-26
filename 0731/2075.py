@@ -11,8 +11,7 @@ sq = int(n**0.5)
 
 for i in range(n):
     temp = list(map(int, input().split(' ')))
-    if i >= sq:
-        table.append(temp)
+    table.append(temp.sort)
     temp = []
 
 heap = list()
