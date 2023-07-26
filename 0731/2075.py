@@ -1,27 +1,26 @@
-# n번째 큰 수
-
 import sys
 import heapq
-import math
 
 n = int(input())
 
-table = list()
-sq = int(n**0.5)
+table = []
 
 for i in range(n):
     temp = list(map(int, input().split(' ')))
-    table.append(temp.sort)
-    temp = []
+    temp.sort(reverse=True)
+    table.append(temp)
 
-heap = list()
+mx = float('-inf')
 
-for i in reversed(range(sq+1)):
-    for j in reversed(range(n)):
-        heapq.heappush(heap, ((table[i][j])*(-1), table[i][j]))
+for i in range(n):
+    mx = float('-inf')
+    for j in range(n):
+        if table[j][0] > mx:
+            mx = table[j][0]
 
+    for column in table:
+        if mx in column:
+            column.remove(mx)
+            break
 
-for i in range(n-1):
-    heapq.heappop(heap)
-
-print(heapq.heappop(heap)[1])
+print(mx)
