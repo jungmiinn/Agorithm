@@ -25,7 +25,7 @@ for i in range(len(arr)):
         newend = cost + path[start]
         for j in range(des+1, d+1):
             newend += 1
-        print("newend:", newend)
+        # print("newend:", newend)
         if newend < path[d]:
            # print(new)
            path[des] = cost + path[start]
