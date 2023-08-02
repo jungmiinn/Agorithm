@@ -1,40 +1,62 @@
-# 지민이가 궁금한 세계에서 가장 유명한 사람? "제목 : 친구"
-import copy
+# # 지민이가 궁금한 세계에서 가장 유명한 사람 친구
+# import copy
 
-n = int(input())
-arr = []
-save = [0 for i in range(n)]
-copyarr = []
+# n = int(input())
+# arr = []
+# save = [0 for i in range(n)]
+# copyarr = []
+# cp = 0
+# v = []
+
+# def counting(x, y, s):
+#    if y != s:
+#     v.append(y)
+#    idx = x+1
+#    for idx in range(idx, n):
+#         if arr[idx][y] == 'Y'and idx not in v:
+#             counting(y, idx, s)
+#         else:
+#             continue
+    
+#    return len(v)
+           
+
+# for i in range(n): # 입력
+#     temp = list(input())
+#     arr.append(temp)
+
+# for i in range(n):
+#      for j in range(n):
+#         cp = 0
+#         v = []
+#         if arr[j][i] =='Y':
+#            l = counting(i, j, i)
+#            print(v)
+#            if save[i] < l:
+#                 save[i] = l
+
+# print(save)
+# print(max(save))
+
+import sys
+from collections import deque
+
+n = int(sys.stdin.readline())
+graph = [list(sys.stdin.readline().strip()) for _ in range(n)]
+# 2-친구 사이일 때 1, 아니면 0
+f = [[0] * n for _ in range(n)]
+
+for k in range(n):
+  for i in range(n):
+    for j in range(n):
+      if i == j:
+        continue
+      # 2-친구인 경우
+      if graph[i][j] == 'Y' or (graph[i][k] == 'Y' and graph[k][j] =='Y'):
+        f[i][j] = 1
+
 res = 0
 
-
-def counting(x, y):
-    print("moved to :", x, y)
-    global res
-    res += 1 # 친구수 ++
-    copyarr[x][y] = 'N'
-    copyarr[y][x] = 'N' # 서로서로 일단 n처리 
-    for i in range(x, n):
-        for j in range(y, n): # 받아온 지점부터 탐색 ㄱㄱ
-            if copyarr[i][j] == 'Y':
-                counting(j, i) # 찾으면 또 ㄱㄱ
-    print("finished at:", x, y)
-    return res # 리턴
-        
-
-for i in range(n): # 입력
-    temp = list(input())
-    arr.append(temp)
-
-
-for i in range(n): 
-    for j in range(n):
-        if arr[j][i] == 'Y': # y찾기
-            copyarr = copy.deepcopy(arr) # 재귀함수에서 쓸 함수 복사
-            res = 0 # 얘를 어디서 해줘야하지?
-            friend = counting(j, i) # 함수 호출
-            print("friend count:", friend)
-            if save[i] < friend: # 최대 값 저장해야하니까 비교해서 큰놈만 집어넣기
-                save[i] = friend
-
-print(max(save)-1)
+for row in f:
+  res = max(res,sum(row))
+print(res)
